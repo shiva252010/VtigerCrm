@@ -43,6 +43,8 @@ public class Vtiger extends BaseTest {
 		org.searchNow("kama_singh");
 		lib.select(org.getDd(), 1);
 		org.clickSearchNow();
+String loginTitle=driver.getTitle();
+		System.out.println(loginTitle);
 		lib.moveMouseOnElement(org.getMore(), driver);
 		Thread.sleep(2000);
 		org.getCampaign().click();
