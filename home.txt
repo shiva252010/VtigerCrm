@@ -1,0 +1,48 @@
+public class VtigerHomePage {
+
+	@FindBy(xpath="(//a[.='Organizations'])[1]")
+	private WebElement org;
+
+	@FindBy(xpath="//img[@title='Create Organization...']")
+	private WebElement plus;
+
+
+	public VtigerHomePage(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+
+	public WebElement getPlus() {
+		return plus;
+	}
+
+	public WebElement getOrg() {
+		return org;
+	}
+
+	public	void orgClick()
+	{
+		int count=0;
+		while(count<=20) {
+			try {
+				org.click();
+				break;
+			}
+			catch(Throwable e) {
+				{
+					try
+					{
+						Thread.sleep(2000);
+					}
+					catch(Exception e1) {
+					e1.printStackTrace();
+					count++;
+					}
+				}
+			}
+		}
+	}
+
+	public	void createOrg(){
+           plus.click();
+	}
+}

@@ -1,0 +1,31 @@
+public class VtigerCreateOrg {
+
+	@FindBy(xpath="//input[@class='detailedViewTextBox' and @name='accountname']")
+	private WebElement orname;
+
+	@FindBy(xpath="//input[@type='button' and @title='Save [Alt+S]']")
+	private WebElement save;
+
+	public WebElement getSave() {
+		return save;
+	}
+
+	public WebElement getOrname() {
+		return orname;
+	}
+
+
+	public VtigerCreateOrg(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+	public void	cretOrg(String s)
+	{
+		orname.sendKeys(s);
+
+	}
+
+	public	void clickSave(String s1) {
+		orname.sendKeys(s1);
+            save.click();
+	}
+}

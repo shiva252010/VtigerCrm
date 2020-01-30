@@ -1,0 +1,75 @@
+public class OrganisationsPage {
+
+//this my orgmodification
+
+	@FindBy(xpath="//input [@class='txtBox']")
+	private WebElement search;
+
+	public WebElement getSearch() {
+		return search;
+	}
+
+	@FindBy(xpath="//select[@id='bas_searchfield']")
+	private WebElement dd;
+
+	public WebElement getDd() {
+		return dd;
+	}
+
+	@FindBy(xpath="//input[@class='crmbutton small create' and @value=' Search Now ']")
+	private WebElement searchNow;
+
+	@FindBy(xpath="//a[.='More']")
+	private WebElement more;
+	
+	@FindBy(xpath="//a[.='Campaigns']")
+	private WebElement campaign;
+
+
+	public WebElement getCampaign() {
+		return campaign;
+	}
+
+	public WebElement getMore() {
+		return more;
+	}
+
+	public WebElement getSearchNow() {
+		return searchNow;
+	}
+	public void clickSearchNow(){
+		searchNow.click();
+	}
+
+	public  void   searOrg(String d1) throws InterruptedException{
+		Thread.sleep(2000);
+		search.sendKeys(d1);
+
+	}
+
+	public	void searchNow(String f1){
+		search.sendKeys(f1);
+
+	}
+      
+
+	
+	//	public	void handlingDD(){
+	//		Select sel = new Select(dd);
+	//		sel.selectByIndex(1);
+	//	}
+
+	public	void clickMore(){ 
+		more.click();
+	}
+
+	//	public void mouseHover(WebElement element ,WebDriver driver)
+	//	{
+	//		
+	//		Actions ac=new Actions(driver);
+	//		ac.moveToElement(element).perform();
+	//	}
+	public OrganisationsPage(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+}
