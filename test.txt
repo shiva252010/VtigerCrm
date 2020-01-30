@@ -1,0 +1,57 @@
+package com.makemy.t;
+
+import org.testng.annotations.Test;
+
+import com.makemytrip.generics.BaseTest;
+import com.makemytrip.generics.FileLib;
+import com.makemytrip.generics.WebDriverLib;
+import com.pom.pages.OrganisationsPage;
+import com.pom.pages.VtigerCreateOrg;
+import com.pom.pages.VtigerHomePage;
+import com.pom.pages.VtigerLoginPage;
+
+public class Vtiger extends BaseTest {
+
+	WebDriverLib lib;
+	
+	@Test
+	public void openVtiger() throws Throwable {
+		VtigerLoginPage vt = new VtigerLoginPage(driver);
+		FileLib flib = new FileLib();
+		
+		 lib = new WebDriverLib();
+		String untb = flib.getKeyPropValue("un");
+		String pwd = flib.getKeyPropValue("pwd");
+		
+
+		vt.login(untb,pwd);
+    		String loginTitle=driver.getTitle();
+		System.out.println(loginTitle);
+		
+		VtigerHomePage vt1 = new VtigerHomePage(driver);
+		vt1.orgClick();
+		vt1.createOrg();
+		
+		VtigerCreateOrg vt2 = new VtigerCreateOrg(driver);
+		String var = "kama_empire2"+lib.getRanDomNum();
+	//	vt2.cretOrg(var);
+		vt2.clickSave(var);
+	
+		vt1.orgClick();
+		Thread.sleep(2000);
+		OrganisationsPage org = new OrganisationsPage(driver);
+		org.searchNow("kama_singh");
+		lib.select(org.getDd(), 1);
+		org.clickSearchNow();
+		lib.moveMouseOnElement(org.getMore(), driver);
+		Thread.sleep(2000);
+		org.getCampaign().click();
+//		org.handlingDD();
+//		
+//		org.clickSearchNow();
+//		
+	
+//		
+		
+	}
+}
